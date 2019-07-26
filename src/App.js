@@ -26,9 +26,9 @@ class App extends Component {
           </Column>
         </Row>
         <Row flexGrow={1}>
-          <Column flexGrow={1} style={{backgroundColor:this.state.colors[2]}}>
-          </Column>
           <Column flexGrow={1} style={{backgroundColor:this.state.colors[3]}}>
+          </Column>
+          <Column flexGrow={1} style={{backgroundColor:this.state.colors[2]}}>
           </Column>
         </Row>
       </Column>
