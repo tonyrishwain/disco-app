@@ -1,34 +1,38 @@
 import React, { Component } from 'react';
 import { Column, Row } from 'simple-flexbox';
 
+const colors = [
+  "red",
+  "blue",
+  "purple",
+  "orange"
+]
+
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      colors: ["red", "blue", "purple", "orange"]
+      colors: colors
     }
   }
-  handleClick() {
-    let current = this.state.colors
-    let future = []
-    for(let i = 0; i < current.length; i++) {
-      i !== 3 ? future.push(current[i]) : future.unshift(current[i])
-    }
-    return future
+  handleClick(arr) {
+    let last = arr[arr.length - 1]
+    return [last].concat(arr.filter(item => item !== last))
   }
   render() {
+    let current = this.state.colors
     return (
-      <Column flexGrow={1} onClick={() => this.setState({colors: this.handleClick()})}>
+      <Column flexGrow={1} onClick={() => this.setState({colors: this.handleClick(current)})}>
         <Row flexGrow={1}>
-          <Column flexGrow={1} style={{backgroundColor:this.state.colors[0]}}>
+          <Column flexGrow={1} style={{backgroundColor:current[0]}}>
           </Column>
-          <Column flexGrow={1} style={{backgroundColor:this.state.colors[1]}}>
+          <Column flexGrow={1} style={{backgroundColor:current[1]}}>
           </Column>
         </Row>
         <Row flexGrow={1}>
-          <Column flexGrow={1} style={{backgroundColor:this.state.colors[3]}}>
+          <Column flexGrow={1} style={{backgroundColor:current[3]}}>
           </Column>
-          <Column flexGrow={1} style={{backgroundColor:this.state.colors[2]}}>
+          <Column flexGrow={1} style={{backgroundColor:current[2]}}>
           </Column>
         </Row>
       </Column>
